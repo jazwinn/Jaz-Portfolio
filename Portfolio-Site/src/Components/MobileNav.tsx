@@ -11,7 +11,7 @@ export default function MobileNav({className}:Props) {
     <div className="md:hidden relative ${className}">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-1 bg-[#524DD3] text-white rounded-full z-50 relative hover:-translate-y-px hover:brightness-125 hover:shadow-lg"
+        className="p-1 bg-[#524DD3] text-white rounded-full z-50 relative hover:-translate-y-px hover:brightness-125 hover:shadow-lg hover:cursor-pointer"
       >
         {isOpen ? "✕" : "☰"}
       </button>

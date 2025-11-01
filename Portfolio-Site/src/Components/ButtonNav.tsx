@@ -13,7 +13,7 @@ export default function Button({ text, id, className, ...props }: ButtonProps) {
         const section = document.getElementById(id);
         section?.scrollIntoView({ behavior: "smooth" });
       }}
-      className={`flex items-center rounded-3xl p-2 text-white hover:-translate-y-px hover:brightness-125 hover:shadow-lg  ${className}`}
+      className={`flex items-center rounded-3xl p-2 text-white hover:-translate-y-px hover:brightness-125 hover:shadow-lg hover:cursor-pointer ${className}`}
     >
       {text}
     </button>

@@ -1,14 +1,28 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './Components/Header'
-import Hero from './Components/Hero'
+import Hero from './Hero'
+import About from "./About";
 
 import './App.css'
 
+
 function App() {
+
 
   return (
     <>
-      <Header/>
-      <Hero/>
+      
+      <BrowserRouter>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Hero/>} />
+          <Route path="/About" element={<About/>} />
+          <Route path="/contact" element={<Hero/>} />
+        </Routes>
+      </BrowserRouter>
+      
+      
     </>
   )
 }
