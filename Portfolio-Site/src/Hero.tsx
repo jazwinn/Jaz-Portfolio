@@ -1,4 +1,6 @@
 import "./index.css"
+import ButtonNav from "./Components/ButtonNav"
+import ButtonDownload from "./Components/ButtonDownload"
 
 export default function Hero(){
     return(
@@ -9,7 +11,10 @@ export default function Hero(){
 
                         <h1 className="text-5xl mb-4 font-bold font-Satoshi">Hi, I'm Jaz Winn</h1>
                         <p className="text-2xl text-[#c7c7c7] mb-5 font-semibold">A full-stack Software Engineer specialized in C++ systems and real-time graphics</p>
-
+                        <div className="flex gap-4">
+                            <ButtonNav className="h-10 bg-[#524DD3] text-[100%] font-semibold" text='Contact Me' id='/Contact'/>
+                            <ButtonDownload className="h-10 bg-[#524DD3] text-[100%] font-semibold" text='Resume' id='Jaz_Winn_Resume.pdf'/>
+                        </div>
                     </div>
                     <div className="pl-8 pr-8 flex justify-center w-1/2">
                         <img src="src/assets/Me.JPG" className="w-[100%] h-auto object-cover animate-slideInLeft"></img>
