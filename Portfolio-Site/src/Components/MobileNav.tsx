@@ -4,7 +4,7 @@ import '../index.css'
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
-export default function MobileNav({className}:Props) {
+export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
