@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Routes>
-          <Route path="/Jaz-Portfolio" element={<Hero/>} />
+          <Route path="/Jaz-Portfolio/" element={<Hero/>} />
           <Route path="/Jaz-Portfolio/About" element={<About/>} />
           <Route path="/Jaz-Portfolio/contact" element={<Contact/>} />
           <Route path="/Jaz-Portfolio/Projects" element={<Project/>}/>

@@ -12,7 +12,7 @@ export default function ButtonDownload({ text, id, className, ...props }: Button
       {...props}
       onClick={() => {
           const link = document.createElement("a");
-          link.href = "/" + id; // path in public/
+          link.href = "Jaz-Portfolio/" + id; // path in public/
           link.download = id; // filename
           link.click();
       }}
