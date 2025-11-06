@@ -3,7 +3,7 @@ import '../index.css'
 import Button from './ButtonDownload'
 import MobileNav from './MobileNav'
 import NavMenu from './NavMenu'
-import resume from '../assets/Jaz_Winn_Resume.pdf'
+import resume from '../assets/JazWinn_Resume.pdf'
 import { useNavigate, useLocation } from "react-router-dom";
 
 // interface PageProps {

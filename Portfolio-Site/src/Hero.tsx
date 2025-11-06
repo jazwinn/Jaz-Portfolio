@@ -2,7 +2,7 @@ import "./index.css"
 import ButtonNav from "./Components/ButtonNav"
 import ButtonDownload from "./Components/ButtonDownload"
 import Me from "./assets/ME.jpeg"
-import resume from "./assets/Jaz_Winn_Resume.pdf"
+import resume from "./assets/JazWinn_Resume.pdf"
 
 export default function Hero(){
     return(
