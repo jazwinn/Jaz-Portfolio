@@ -3,6 +3,7 @@ import '../index.css'
 import Button from './ButtonDownload'
 import MobileNav from './MobileNav'
 import NavMenu from './NavMenu'
+import resume from '../assets/Jaz_Winn_Resume.pdf'
 import { useNavigate, useLocation } from "react-router-dom";
 
 // interface PageProps {
@@ -26,7 +27,7 @@ export default function Header(){
                             <NavMenu text="Projects" id="/Jaz-Portfolio/Projects" active={currentPath === "/Jaz-Portfolio/Projects"} />
                             <NavMenu text="Contact" id="/Jaz-Portfolio/Contact" active={currentPath === "/Jaz-Portfolio/Contact"} />
                         </div>
-                        <Button className='h-10 bg-[#524DD3] text-[100%]' text='Resume' id='Jaz_Winn_Resume.pdf'/>
+                        <Button className='h-10 bg-[#524DD3] text-[100%]' text='Resume' id={resume} filename="JazWinn_Resume.pdf"/>
                         <div id="MobileMenu" className="flex md:hidden">
                             <MobileNav/>
                         </div>
