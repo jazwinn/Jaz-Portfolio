@@ -1,6 +1,7 @@
 import "./index.css"
 import ButtonNav from "./Components/ButtonNav"
 import ButtonDownload from "./Components/ButtonDownload"
+import Me from "./assets/ME.jpeg"
 
 export default function Hero(){
     return(
@@ -17,7 +18,7 @@ export default function Hero(){
                         </div>
                     </div>
                     <div className="pl-8 pr-8 flex justify-center w-1/2">
-                        <img src="src/assets/Me.JPG" className="w-[100%] h-auto object-cover animate-slideInLeft"></img>
+                        <img src={Me} className="w-[100%] h-auto object-cover animate-slideInLeft"></img>
                     </div>
 
 

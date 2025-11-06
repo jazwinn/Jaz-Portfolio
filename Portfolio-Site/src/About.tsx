@@ -1,5 +1,6 @@
 import "./index.css"
 import SkillCard from "./Components/SkillCard"
+import Me2 from "./assets/ME2.jpeg"
 
 export default function About(){
     return(
@@ -7,7 +8,7 @@ export default function About(){
             <div id="About" className="pt-10 pb-10 px-80">
                 <div className="flex w-full">
                     <div className="pl-8 pr-8 flex justify-center w-1/2">
-                        <img src="src/assets/Me2.JPG" className="w-[100%] h-auto object-cover animate-slideInRight"></img>
+                        <img src={Me2} className="w-[100%] h-auto object-cover animate-slideInRight"></img>
                     </div>
                     <div className="flex flex-col justify-center text-white w-1/2 pl-4 pr-4 animate-slideInLeft">
 
