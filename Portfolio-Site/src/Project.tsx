@@ -14,7 +14,7 @@ import PortfolioImg from "./assets/Portfolio.jpeg";
 export default function Project(){
     return(
         <>
-            <div id="Project" className="pt-10 pb-10 px-80">
+            <div id="Project" className="pt-10 pb-10 px-6 sm:px-12 md:px-20 lg:px-40 xl:px-80">
                 <div className="flex flex-col w-full">
                     <div className="flex justify-center">
                         <h1 className="text-white text-5xl font-bold font-Satoshi">My Projects</h1>

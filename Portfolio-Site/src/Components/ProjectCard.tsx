@@ -9,7 +9,7 @@ interface ProjectProp{
 
 export default function ProjectCard({imgLink, projTitle ,projDesc, gitLink}: ProjectProp){
     return (
-        <div className=" rounded-2xl flex flex-col bg-[#1B1933] shadow-lg w-[25%]">
+        <div className=" rounded-2xl flex flex-col bg-[#1B1933] shadow-lg w-[20rem]">
             <img src={imgLink} alt={projTitle} className="w-full h-48 object-cover rounded-t-2xl"/>
             <div className="p-4 flex flex-col flex-1 text-white">
                 <h2 className="flex justify-center text-xl font-bold mb-3">{projTitle}</h2>
