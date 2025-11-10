@@ -23,10 +23,10 @@ export default function MobileNav({ className }: MobileNavProp) {
         className={`fixed top-0 left-0 w-full h-full bg-[#1B1933] text-white flex flex-col items-center justify-center text-2xl transition-transform duration-300 ease-in-out overflow-y-auto
         ${isOpen ? "translate-y-0" : "-translate-y-full"} z-40`}
       >
-        <a href="#home" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio")}}>Home</a>
-        <a href="#about" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/About")}}>About</a>
-        <a href="#projects" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Projects")}}>Projects</a>
-        <a href="#contact" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Contact")}}>Contact</a>
+        <a className="mb-6 hover:cursor-pointer" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio")}}>Home</a>
+        <a className="mb-6 hover:cursor-pointer" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/About")}}>About</a>
+        <a className="mb-6 hover:cursor-pointer" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Projects")}}>Projects</a>
+        <a className="mb-6 hover:cursor-pointer" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Contact")}}>Contact</a>
       </div>
     </>
   );
