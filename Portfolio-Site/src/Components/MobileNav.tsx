@@ -25,7 +25,7 @@ export default function MobileNav({ className }: MobileNavProp) {
       >
         <a href="#home" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio")}}>Home</a>
         <a href="#about" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/About")}}>About</a>
-        <a href="#portfolio" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Projects")}}>Portfolio</a>
+        <a href="#projects" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Projects")}}>Projects</a>
         <a href="#contact" className="mb-6" onClick={() => {setIsOpen(false); navigate("/Jaz-Portfolio/Contact")}}>Contact</a>
       </div>
     </>
