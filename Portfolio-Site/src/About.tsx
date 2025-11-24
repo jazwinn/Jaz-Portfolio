@@ -44,7 +44,7 @@ export default function About() {
         <div className="flex justify-center flex-wrap pt-10 gap-6 sm:gap-8 md:gap-10">
           <SkillCard
             title="Language"
-            skills={["C++", "C", "Java", "Python", "JavaScript", "Python"]}
+            skills={["C++", "C", "Java", "Python", "JavaScript"]}
           />
           <SkillCard
             title="Front End"
