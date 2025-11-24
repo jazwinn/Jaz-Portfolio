@@ -10,6 +10,7 @@ import GameEngine2DImg from "./assets/2DGameEngine.jpeg";
 import CameraCullingImg from "./assets/CameraCulling.jpeg";
 import DocumentReaderImg from "./assets/DocumentReader.png";
 import PortfolioImg from "./assets/Portfolio.jpeg";
+import GraphicEngineImg from "./assets/3dEngine.jpeg";
 
 export default function Project(){
     return(
@@ -24,6 +25,7 @@ export default function Project(){
                         <ProjectCard projTitle='Stock Viewer Web Application' imgLink={StockWebAppImg} gitLink='https://github.com/jazwinn/React-Web-Stock-Viewer' projDesc='A web application that calls on APIs to view stock prices, company news, and AI-generated summaries. The backend is built with Node.js, while the frontend is built with React and Tailwind.' />
                         <ProjectCard projTitle='Inventory Manager' imgLink={InventoryManagerImg} gitLink='https://github.com/jazwinn/Inventory-Web-Application' projDesc='Full-stack CRUD project using Java, Spring Boot (REST API), HTML/CSS/JavaScript for the frontend, and SQL for database management.' />
                         <ProjectCard projTitle='Procedural Cave Generation' imgLink={CaveGenerationImg} gitLink='https://github.com/jazwinn/Procedural-Cave-Generation' projDesc='A cave terrain generation system developed in C++20 and OpenGL to produce a realistic 3D cave system. This system implemented complex algorithms and data structures to deliver performance and visual realism.' />
+                        <ProjectCard projTitle='3D Graphic Engine' imgLink={GraphicEngineImg} gitLink='https://github.com/jazwinn/Graphics-Engine' projDesc='Custom made 3D graphics engine in C++ build in OpenGL Able to display simple shapes and models. Allows for point, spot and directional light.' />
                         <ProjectCard projTitle='3D Game Engine' imgLink={GameEngine3DImg} gitLink='https://github.com/jazwinn/Kos-Engine-2.0' projDesc='Custom 3D game engine in C++ build from the first Engine. Uses Entity Component System(ECS) Architecture, C++ scripting, custom compile time reflection.' />
                         <ProjectCard projTitle='2D Game Engine' imgLink={GameEngine2DImg} gitLink='https://github.com/jazwinn/Kos-Engine' projDesc='Custom 2D game engine in C++. Uses Entity Component System(ECS) Architecture ,C# scripting, custom compile time reflection.' />
                         <ProjectCard projTitle='Camera Culling' imgLink={CameraCullingImg} gitLink='https://github.com/jazwinn/Spatial-Data-Structure-using-Bounding-Volume-Hierarchy-BVH-' projDesc='Demonstrating Improving performance for rendering 3D objects through the use of Bounding Volume Hierarchy.' />

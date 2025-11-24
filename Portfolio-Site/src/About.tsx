@@ -1,6 +1,6 @@
 import "./index.css";
 import SkillCard from "./Components/SkillCard";
-import Me2 from "./assets/ME2.jpeg";
+import Me2 from "./assets/Me3.jpg";
 
 export default function About() {
   return (
@@ -22,7 +22,7 @@ export default function About() {
         {/* Text */}
         <div className="flex flex-col justify-center text-white w-full md:w-1/2 pl-0 md:pl-4 pr-0 md:pr-4 animate-slideInLeft">
           <h1 className="text-3xl sm:text-4xl md:text-5xl mb-4 font-bold font-Satoshi">
-            About Me
+            No Limits
           </h1>
           <p className="text-base sm:text-lg md:text-2xl text-[#c7c7c7] mb-5 font-semibold">
             I'm a developer passionate about building software that is
@@ -44,7 +44,7 @@ export default function About() {
         <div className="flex justify-center flex-wrap pt-10 gap-6 sm:gap-8 md:gap-10">
           <SkillCard
             title="Language"
-            skills={["C++", "C", "Java", "Python", "JavaScript"]}
+            skills={["C++", "C", "Java", "Python", "JavaScript", "Python"]}
           />
           <SkillCard
             title="Front End"
@@ -56,11 +56,15 @@ export default function About() {
           />
           <SkillCard
             title="Frameworks and Libraries"
-            skills={["OpenGL", "FFMPEG", "OpenCV", "GoogleTest"]}
+            skills={["OpenGL", "OpenCV", "FFMPEG", "OpenCV", "GoogleTest"]}
+          />
+          <SkillCard
+            title="Database"
+            skills={["MySQL", "MongoDB"]}
           />
           <SkillCard
             title="Tools"
-            skills={["Github", "Bitbucket", "CMake", "Docker"]}
+            skills={["Github", "Bitbucket", "CI/CD","CMake", "Docker"]}
           />
           <SkillCard
             title="Concepts"

@@ -1,7 +1,7 @@
 import "./index.css"
 import ButtonNav from "./Components/ButtonNav"
 import ButtonDownload from "./Components/ButtonDownload"
-import Me from "./assets/ME.jpeg"
+import Me from "./assets/ME2.jpeg"
 import resume from "./assets/JazWinn_Resume.pdf"
 
 export default function Hero() {
@@ -18,7 +18,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl text-[#c7c7c7] mb-5 font-semibold">
-            A full-stack Software Engineer specialized in C++ systems and real-time graphics
+            A versatile Software Engineer skilled in designing and developing applications across the full stack, with strong foundations in system design and modern web technologies.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
