@@ -51,12 +51,8 @@ export default function About() {
             skills={["HTML", "CSS", "React", "Tailwind"]}
           />
           <SkillCard
-            title="Back End"
-            skills={["REST API", "Spring Boot"]}
-          />
-          <SkillCard
             title="Frameworks and Libraries"
-            skills={["OpenGL", "OpenCV", "FFMPEG", "OpenCV", "GoogleTest"]}
+            skills={["OpenGL", "OpenCV", "FFMPEG", "Spring Boot", "GoogleTest", "ImGui"]}
           />
           <SkillCard
             title="Database"
