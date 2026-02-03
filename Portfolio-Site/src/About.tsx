@@ -1,79 +1,70 @@
 import "./index.css";
-import SkillCard from "./Components/SkillCard";
 import Me2 from "./assets/Me3.jpg";
 
 export default function About() {
+  const skills = ["React", "TypeScript", "Node.js", "Python", "C++", "Java"];
+
   return (
     <section
-      id="About"
-      className="pt-10 pb-10 px-6 sm:px-12 md:px-20 lg:px-40 xl:px-80"
+      id="about"
+      className="py-20 px-6 sm:px-12 md:px-20 lg:px-40 bg-[#f8f9fa]"
     >
-      {/* About Section */}
-      <div className="flex flex-col md:flex-row w-full items-center text-center md:text-left">
-        {/* Image */}
-        <div className="pl-0 md:pl-8 pr-0 md:pr-8 flex justify-center w-full md:w-1/2 mb-8 md:mb-0">
-          <img
-            src={Me2}
-            alt="Portrait"
-            className="w-3/4 sm:w-2/3 md:w-full h-auto object-cover rounded-2xl animate-slideInRight"
-          />
-        </div>
-
-        {/* Text */}
-        <div className="flex flex-col justify-center text-white w-full md:w-1/2 pl-0 md:pl-4 pr-0 md:pr-4 animate-slideInLeft">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-4 font-bold font-Satoshi">
-            No Limits
-          </h1>
-          <p className="text-base sm:text-lg md:text-2xl text-[#c7c7c7] mb-5 font-semibold">
-            I'm a developer passionate about building software that is
-            intuitive, efficient, and meaningful. I enjoy exploring new tools,
-            improving my skills, and creating projects that challenge and
-            inspire me.
-          </p>
-        </div>
+      {/* Section Title */}
+      <div className="flex justify-center mb-16">
+        <h2 className="text-4xl sm:text-5xl font-bold text-[#1e293b] font-Satoshi text-center">
+          About Me
+        </h2>
       </div>
 
-      {/* Skills Section */}
-      <div className="flex flex-col w-full pt-16 sm:pt-20">
-        <div className="flex justify-center">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold font-Satoshi text-center">
-            My Tech Stack and Skills
-          </h1>
+      {/* Content */}
+      <div className="flex flex-col md:flex-row gap-12 items-center max-w-6xl mx-auto">
+        {/* Image/Code Screenshot */}
+        <div className="w-full md:w-1/2 animate-slideInRight">
+          <img
+            src={Me2}
+            alt="About Me"
+            className="w-full h-auto object-cover rounded-2xl shadow-lg"
+          />
         </div>
 
-        <div className="flex justify-center flex-wrap pt-10 gap-6 sm:gap-8 md:gap-10">
-          <SkillCard
-            title="Language"
-            skills={["C++", "C", "Java", "Python", "JavaScript"]}
-          />
-          <SkillCard
-            title="Front End"
-            skills={["HTML", "CSS", "React", "Tailwind"]}
-          />
-          <SkillCard
-            title="Frameworks and Libraries"
-            skills={["OpenGL", "OpenCV", "FFMPEG", "Spring Boot", "GoogleTest", "ImGui"]}
-          />
-          <SkillCard
-            title="Database"
-            skills={["MySQL", "MongoDB"]}
-          />
-          <SkillCard
-            title="Tools"
-            skills={["Github", "Bitbucket", "CI/CD","CMake", "Docker"]}
-          />
-          <SkillCard
-            title="Concepts"
-            skills={[
-              "OOP",
-              "DSA",
-              "Spatial Data Structure",
-              "Graphics Pipeline",
-              "Engine Architecture",
-            ]}
-          />
+        {/* Text Content */}
+        <div className="w-full md:w-1/2 animate-slideInLeft">
+          <p className="text-lg text-[#64748b] mb-6 leading-relaxed">
+            I'm a <strong className="text-[#1e293b]">Full Stack Developer</strong>{" "}
+            with over <strong className="text-[#1e293b]">2 years</strong> of hands-on
+            experience in building efficient and scalable applications. I specialize
+            in crafting elegant solutions that bridge design and engineering.
+          </p>
+
+          <p className="text-lg text-[#64748b] mb-6 leading-relaxed">
+            When I'm not coding, you'll find me tinkering with new tools, exploring
+            innovative frameworks, or challenging myself with algorithmic puzzles.
+            I believe in continuous learning and pushing the boundaries of what's
+            possible.
+          </p>
+
+          <p className="text-lg text-[#64748b] mb-6 leading-relaxed">
+            My passion lies in creating software that is not only{" "}
+            <strong className="text-[#1e293b]">functional</strong> and{" "}
+            <strong className="text-[#1e293b]">performant</strong>, but also{" "}
+            <strong className="text-[#1e293b]">intuitive</strong> and{" "}
+            <strong className="text-[#1e293b]">meaningful</strong> to users.
+          </p>
+
+          {/* Skill Badges */}
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className="px-4 py-2 rounded-full bg-[#6366f1] text-white text-sm font-medium hover:bg-[#4f46e5] transition-colors duration-300"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
