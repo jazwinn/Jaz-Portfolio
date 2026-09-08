@@ -1,111 +1,116 @@
-import "../index.css";
+import { useEffect, useState } from "react";
+import { FaBars, FaXmark, FaFileArrowDown } from "react-icons/fa6";
 import resume from "../assets/JazWinn_Resume.pdf";
-import { useState } from "react";
+import useActiveSection from "../hooks/useActiveSection";
+
+const links = [
+  { name: "About", id: "about" },
+  { name: "Experience", id: "experience" },
+  { name: "Projects", id: "projects" },
+  { name: "Skills", id: "skills" },
+  { name: "Contact", id: "contact" },
+];
+
+const sectionIds = ["hero", ...links.map((link) => link.id)];
 
 export default function Header() {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(sectionIds);
 
-    const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-            setIsMobileMenuOpen(false);
-        }
-    };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    const navLinks = [
-        { name: "Home", id: "hero" },
-        { name: "About", id: "about" },
-        { name: "Projects", id: "projects" },
-        { name: "Skills", id: "skills" },
-        { name: "Contact", id: "contact" },
-    ];
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-line bg-void/80 backdrop-blur-xl"
+          : "border-b border-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-10 lg:px-16">
+        <a
+          href="#hero"
+          className="group flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-ink"
+        >
+          <span className="text-cyan">{"<"}</span>
+          jazwinn
+          <span className="text-cyan">{" />"}</span>
+        </a>
 
-    return (
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-[#e2e8f0] shadow-sm">
-            <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-20 lg:px-40">
-                <div className="flex justify-between items-center h-16">
-                    {/* Logo */}
-                    <button
-                        onClick={() => scrollToSection("hero")}
-                        className="text-2xl font-bold text-[#1e293b] font-Satoshi hover:text-[#6366f1] transition-colors"
-                    >
-                        JW
-                    </button>
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 md:flex">
+          {links.map((link, index) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`rounded-md px-3 py-2 text-base transition-colors duration-300 ${
+                active === link.id
+                  ? "text-cyan"
+                  : "text-dim hover:text-ink"
+              }`}
+            >
+              <span className="mr-1.5 font-mono text-xs text-faint">
+                0{index + 1}.
+              </span>
+              {link.name}
+            </a>
+          ))}
+          <a
+            href={resume}
+            download="JazWinn_Resume.pdf"
+            className="ml-3 inline-flex items-center gap-2 rounded-lg border border-cyan/40 px-4 py-2 text-base font-medium text-cyan transition-all duration-300 hover:bg-cyan/10"
+          >
+            <FaFileArrowDown className="text-xs" />
+            Résumé
+          </a>
+        </nav>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <button
-                                key={link.id}
-                                onClick={() => scrollToSection(link.id)}
-                                className="text-[#64748b] hover:text-[#6366f1] transition-colors font-medium"
-                            >
-                                {link.name}
-                            </button>
-                        ))}
-                        <a
-                            href={resume}
-                            download="JazWinn_Resume.pdf"
-                            className="px-5 py-2 bg-[#6366f1] text-white rounded-lg font-medium hover:bg-[#4f46e5] transition-colors"
-                        >
-                            Resume
-                        </a>
-                    </nav>
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setOpen((value) => !value)}
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+        >
+          {open ? <FaXmark /> : <FaBars />}
+        </button>
+      </div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden text-[#1e293b] p-2"
-                        aria-label="Toggle menu"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            {isMobileMenuOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            )}
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Mobile Menu */}
-                {isMobileMenuOpen && (
-                    <div className="md:hidden py-4 space-y-3 border-t border-[#e2e8f0]">
-                        {navLinks.map((link) => (
-                            <button
-                                key={link.id}
-                                onClick={() => scrollToSection(link.id)}
-                                className="block w-full text-left text-[#64748b] hover:text-[#6366f1] transition-colors font-medium py-2"
-                            >
-                                {link.name}
-                            </button>
-                        ))}
-                        <a
-                            href={resume}
-                            download="JazWinn_Resume.pdf"
-                            className="block w-full text-center px-5 py-2 bg-[#6366f1] text-white rounded-lg font-medium hover:bg-[#4f46e5] transition-colors mt-3"
-                        >
-                            Resume
-                        </a>
-                    </div>
-                )}
-            </div>
-        </header>
-    );
+      {/* Mobile menu */}
+      {open && (
+        <nav className="border-t border-line bg-void/95 px-6 py-4 backdrop-blur-xl md:hidden">
+          {links.map((link, index) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setOpen(false)}
+              className={`block border-b border-line/60 py-3 text-lg last:border-0 ${
+                active === link.id ? "text-cyan" : "text-dim"
+              }`}
+            >
+              <span className="mr-2 font-mono text-sm text-faint">
+                0{index + 1}.
+              </span>
+              {link.name}
+            </a>
+          ))}
+          <a
+            href={resume}
+            download="JazWinn_Resume.pdf"
+            onClick={() => setOpen(false)}
+            className="mt-4 flex items-center justify-center gap-2 rounded-lg border border-cyan/40 py-3 font-medium text-cyan"
+          >
+            <FaFileArrowDown className="text-xs" />
+            Résumé
+          </a>
+        </nav>
+      )}
+    </header>
+  );
 }

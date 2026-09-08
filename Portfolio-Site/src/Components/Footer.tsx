@@ -1,92 +1,45 @@
-import "../index.css";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
+const socials = [
+  { href: "https://github.com/jazwinn", icon: <FaGithub />, label: "GitHub" },
+  {
+    href: "https://www.linkedin.com/in/jazwinn-ng/",
+    icon: <FaLinkedin />,
+    label: "LinkedIn",
+  },
+  { href: "mailto:ngjazwinn@gmail.com", icon: <FaEnvelope />, label: "Email" },
+];
+
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+  return (
+    <footer className="border-t border-line bg-void px-6 py-10 sm:px-10 lg:px-16">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
+        <div className="text-center sm:text-left">
+          <p className="font-mono text-sm text-ink">Jaz Winn Ng</p>
+          <p className="mt-1 font-mono text-xs text-faint">
+            Built with React, Vite and Tailwind · deployed on GitHub Pages
+          </p>
+        </div>
 
-    return (
-        <footer className="bg-[#1e293b] text-white py-12 px-6 sm:px-12 md:px-20 lg:px-40">
-            <div className="max-w-6xl mx-auto">
-                {/* Footer Content */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                    {/* Left Section - Branding */}
-                    <div className="text-center md:text-left">
-                        <h3 className="text-2xl font-bold font-Satoshi mb-2">Jaz Winn</h3>
-                        <p className="text-[#94a3b8]">Full Stack Developer</p>
-                    </div>
+        <div className="flex items-center gap-3">
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-dim transition-all duration-300 hover:border-cyan hover:text-cyan"
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
 
-                    {/* Middle Section - Quick Links */}
-                    <div className="flex gap-8">
-                        <a
-                            href="#hero"
-                            className="text-[#94a3b8] hover:text-white transition-colors duration-300"
-                        >
-                            Home
-                        </a>
-                        <a
-                            href="#about"
-                            className="text-[#94a3b8] hover:text-white transition-colors duration-300"
-                        >
-                            About
-                        </a>
-                        <a
-                            href="#projects"
-                            className="text-[#94a3b8] hover:text-white transition-colors duration-300"
-                        >
-                            Projects
-                        </a>
-                        <a
-                            href="#skills"
-                            className="text-[#94a3b8] hover:text-white transition-colors duration-300"
-                        >
-                            Skills
-                        </a>
-                        <a
-                            href="#contact"
-                            className="text-[#94a3b8] hover:text-white transition-colors duration-300"
-                        >
-                            Contact
-                        </a>
-                    </div>
-
-                    {/* Right Section - Social Links */}
-                    <div className="flex gap-4">
-                        <a
-                            href="https://github.com/jazwinn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-10 h-10 rounded-full bg-[#334155] flex items-center justify-center hover:bg-[#6366f1] transition-colors duration-300"
-                            aria-label="GitHub"
-                        >
-                            <FaGithub className="text-lg" />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/jazwinn-ng/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-10 h-10 rounded-full bg-[#334155] flex items-center justify-center hover:bg-[#6366f1] transition-colors duration-300"
-                            aria-label="LinkedIn"
-                        >
-                            <FaLinkedin className="text-lg" />
-                        </a>
-                        <a
-                            href="mailto:ngjazwin@gmail.com"
-                            className="w-10 h-10 rounded-full bg-[#334155] flex items-center justify-center hover:bg-[#6366f1] transition-colors duration-300"
-                            aria-label="Email"
-                        >
-                            <FaEnvelope className="text-lg" />
-                        </a>
-                    </div>
-                </div>
-
-                {/* Divider */}
-                <div className="border-t border-[#334155] my-8"></div>
-
-                {/* Bottom Section - Copyright */}
-                <div className="text-center text-[#94a3b8] text-sm">
-                    <p>© {currentYear} Jaz Winn. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-    );
+        <p className="font-mono text-xs text-faint">
+          © {new Date().getFullYear()}
+        </p>
+      </div>
+    </footer>
+  );
 }

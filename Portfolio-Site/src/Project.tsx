@@ -1,110 +1,128 @@
-import "./index.css";
+import { FaGithub, FaArrowRight } from "react-icons/fa";
+import Section from "./Components/Section";
 import ProjectCard from "./Components/ProjectCard";
-
-import PushUpImg from "./assets/PushUp.png";
-import StockWebAppImg from "./assets/StockWebApp.jpeg";
-import InventoryManagerImg from "./assets/InventoryManager.jpeg";
-import CaveGenerationImg from "./assets/CaveGeneration.jpeg";
-import GameEngine3DImg from "./assets/3DGameEngine.jpeg";
-import GameEngine2DImg from "./assets/2DGameEngine.jpeg";
-import CameraCullingImg from "./assets/CameraCulling.jpeg";
-import DocumentReaderImg from "./assets/DocumentReader.png";
-import GraphicEngineImg from "./assets/3dEngine.jpeg";
+import CompactCard from "./Components/CompactCard";
+import { spotlight, featured, smallerWorks } from "./data/projects";
 
 export default function Project() {
-    return (
-        <section
-            id="projects"
-            className="py-20 px-6 sm:px-12 md:px-20 lg:px-40 bg-[#f8f9fa]"
+  return (
+    <Section
+      id="projects"
+      index="03 / Projects"
+      title="Selected work"
+      intro="Things I built to answer a question I couldn't answer by reading."
+      className="bg-shell"
+    >
+      {/* ---------- Flagship ---------- */}
+      <article className="card reveal mb-16 overflow-hidden rounded-2xl">
+        <div className="grid lg:grid-cols-2">
+          {/* Copy */}
+          <div className="order-2 flex flex-col p-7 sm:p-10 lg:order-1">
+            <span className="label mb-4">Flagship project</span>
+            <h3 className="text-2xl font-bold text-ink sm:text-3xl">
+              {spotlight.title}
+            </h3>
+            <p className="mt-2 font-mono text-sm text-cyan">
+              {spotlight.subtitle}
+            </p>
+
+            <p className="mt-5 text-sm leading-relaxed text-dim sm:text-base">
+              {spotlight.blurb}
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-dim sm:text-base">
+              {spotlight.detail}
+            </p>
+
+            {/* Metrics */}
+            <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line">
+              {spotlight.metrics.map((metric) => (
+                <div key={metric.label} className="bg-panel px-4 py-4">
+                  <dt className="sr-only">{metric.label}</dt>
+                  <dd>
+                    <span className="block font-mono text-xl font-semibold text-mint sm:text-2xl">
+                      {metric.value}
+                    </span>
+                    <span className="mt-1 block font-mono text-[11px] leading-tight text-faint">
+                      {metric.label}
+                    </span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-7 flex flex-wrap gap-2">
+              {spotlight.tech.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded border border-line bg-raised px-2.5 py-1 font-mono text-xs text-dim"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href={spotlight.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 inline-flex w-fit items-center gap-2 rounded-lg border border-line-strong px-5 py-2.5 font-medium text-ink transition-all duration-300 hover:border-cyan hover:text-cyan"
+            >
+              <FaGithub />
+              Read the technical report
+              <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          {/* Screenshot */}
+          <div className="order-1 relative min-h-[16rem] overflow-hidden border-b border-line bg-void lg:order-2 lg:border-b-0 lg:border-l">
+            <img
+              src={spotlight.image}
+              alt={spotlight.imageAlt}
+              className="h-full w-full object-cover object-left-top"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent lg:bg-gradient-to-r lg:from-panel/60 lg:via-transparent" />
+          </div>
+        </div>
+      </article>
+
+      {/* ---------- Featured grid ---------- */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((project) => (
+          <ProjectCard key={project.title} project={project} />
+        ))}
+      </div>
+
+      {/* ---------- Smaller works ---------- */}
+      <div className="mt-20">
+        <div className="reveal mb-8 flex items-center gap-4">
+          <h3 className="text-2xl font-bold text-ink sm:text-3xl">
+            Smaller works
+          </h3>
+          <span className="h-px flex-1 hairline" />
+          <span className="font-mono text-xs text-faint">
+            {smallerWorks.length} repos
+          </span>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {smallerWorks.map((project) => (
+            <CompactCard key={project.title} project={project} />
+          ))}
+        </div>
+      </div>
+
+      {/* ---------- Link out ---------- */}
+      <div className="reveal mt-12 text-center">
+        <a
+          href="https://github.com/jazwinn?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 font-mono text-sm text-dim transition-colors duration-300 hover:text-cyan"
         >
-            {/* Featured Projects */}
-            <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col items-center mb-6">
-                    <h2 className="text-4xl sm:text-5xl font-bold text-[#1e293b] font-Satoshi text-center mb-4">
-                        Featured Projects
-                    </h2>
-                    <p className="text-lg text-[#64748b] text-center max-w-2xl">
-                        A selection of projects I've created and contributed to
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                    <ProjectCard
-                        projTitle="OpenCV Push-up Counter"
-                        imgLink={PushUpImg}
-                        gitLink="https://github.com/jazwinn/OpenCV-ELISS-PushUpCounter"
-                        projDesc="A Push-Up assistant inspired by Singapore's ELISS machine, built using YOLO pose estimation, OpenCV, and custom biomechanics logic."
-                        technologies={["Python", "OpenCV", "YOLO", "Computer Vision"]}
-                    />
-                    <ProjectCard
-                        projTitle="Stock Viewer Web App"
-                        imgLink={StockWebAppImg}
-                        gitLink="https://github.com/jazwinn/React-Web-Stock-Viewer"
-                        projDesc="Web application that calls APIs to view stock prices, company news, and AI-generated summaries."
-                        technologies={["React", "Node.js", "Tailwind", "APIs"]}
-                    />
-                    <ProjectCard
-                        projTitle="Inventory Manager"
-                        imgLink={InventoryManagerImg}
-                        gitLink="https://github.com/jazwinn/Inventory-Web-Application"
-                        projDesc="Full-stack CRUD project using Spring Boot REST API with SQL database management."
-                        technologies={["Java", "Spring Boot", "MySQL", "REST"]}
-                    />
-                    <ProjectCard
-                        projTitle="Procedural Cave Generation"
-                        imgLink={CaveGenerationImg}
-                        gitLink="https://github.com/jazwinn/Procedural-Cave-Generation"
-                        projDesc="Cave terrain generation system in C++ and OpenGL producing realistic 3D cave systems."
-                        technologies={["C++", "OpenGL", "Algorithms"]}
-                    />
-                    <ProjectCard
-                        projTitle="3D Graphics Engine"
-                        imgLink={GraphicEngineImg}
-                        gitLink="https://github.com/jazwinn/Graphics-Engine"
-                        projDesc="Custom 3D graphics engine built with OpenGL supporting point, spot and directional lighting."
-                        technologies={["C++", "OpenGL", "GLSL"]}
-                    />
-                    <ProjectCard
-                        projTitle="3D Game Engine"
-                        imgLink={GameEngine3DImg}
-                        gitLink="https://github.com/jazwinn/Kos-Engine-2.0"
-                        projDesc="Custom 3D game engine using ECS Architecture and C++ scripting with compile-time reflection."
-                        technologies={["C++", "ECS", "Game Dev"]}
-                    />
-                </div>
-            </div>
-
-            {/* Smaller Works */}
-            <div className="max-w-6xl mx-auto mt-20">
-                <div className="flex justify-center mb-12">
-                    <h3 className="text-3xl sm:text-4xl font-bold text-[#1e293b] font-Satoshi">
-                        Smaller Works
-                    </h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <ProjectCard
-                        projTitle="2D Game Engine"
-                        imgLink={GameEngine2DImg}
-                        gitLink="https://github.com/jazwinn/Kos-Engine"
-                        projDesc="Custom 2D game engine using ECS Architecture and C# scripting."
-                        technologies={["C++", "C#", "ECS"]}
-                    />
-                    <ProjectCard
-                        projTitle="Camera Culling"
-                        imgLink={CameraCullingImg}
-                        gitLink="https://github.com/jazwinn/Spatial-Data-Structure-using-Bounding-Volume-Hierarchy-BVH-"
-                        projDesc="Improving 3D rendering performance through Bounding Volume Hierarchy."
-                        technologies={["C++", "BVH", "Optimization"]}
-                    />
-                    <ProjectCard
-                        projTitle="Document Reader"
-                        imgLink={DocumentReaderImg}
-                        gitLink="https://github.com/jazwinn/OpenCV-Document-Reader"
-                        projDesc="Scans and converts documents to text using OpenCV."
-                        technologies={["Python", "OpenCV", "OCR"]}
-                    />
-                </div>
-            </div>
-        </section>
-    );
+          Everything else on GitHub
+          <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </Section>
+  );
 }

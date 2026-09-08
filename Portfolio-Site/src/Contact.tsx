@@ -1,91 +1,118 @@
-import "./index.css";
+import { useState } from "react";
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaCopy, FaCheck } from "react-icons/fa6";
+import Section from "./Components/Section";
+
+const EMAIL = "ngjazwinn@gmail.com";
+
+const channels = [
+  {
+    icon: <FaEnvelope />,
+    label: "Email",
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
+  },
+  {
+    icon: <FaPhone />,
+    label: "Phone",
+    value: "+65 9107 7490",
+    href: "tel:+6591077490",
+  },
+  {
+    icon: <FaLinkedin />,
+    label: "LinkedIn",
+    value: "linkedin.com/in/jazwinn-ng",
+    href: "https://www.linkedin.com/in/jazwinn-ng/",
+  },
+  {
+    icon: <FaGithub />,
+    label: "GitHub",
+    value: "github.com/jazwinn",
+    href: "https://github.com/jazwinn",
+  },
+];
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  // mailto only works if the visitor has a mail client registered; copying
+  // the address is the fallback that always does something.
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      const field = document.createElement("textarea");
+      field.value = EMAIL;
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand("copy");
+      field.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <section
+    <Section
       id="contact"
-      className="py-20 px-6 sm:px-12 md:px-20 lg:px-40 bg-white"
+      index="05 / Contact"
+      title="Let's build something fast"
+      intro="Open to graduate and internship roles in GPU computing, graphics and applied machine learning — or just a good conversation about kernels."
+      className="relative bg-shell"
     >
-      {/* Section Title */}
-      <div className="flex flex-col items-center mb-16">
-        <h2 className="text-4xl sm:text-5xl font-bold text-[#1e293b] font-Satoshi text-center mb-4">
-          Get In Touch
-        </h2>
-        <p className="text-lg text-[#64748b] text-center max-w-2xl">
-          Have a project in mind or just want to say hi? Feel free to reach out!
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="glow absolute -bottom-32 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-violet/10" />
+      </div>
+
+      <div className="relative grid gap-4 sm:grid-cols-2">
+        {channels.map((channel) => (
+          <a
+            key={channel.label}
+            href={channel.href}
+            target={channel.href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className="card group reveal flex items-center gap-4 rounded-xl p-5"
+          >
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-line bg-raised text-lg text-cyan transition-colors duration-300 group-hover:border-cyan/50 group-hover:bg-cyan/10">
+              {channel.icon}
+            </span>
+            <span className="min-w-0">
+              <span className="block font-mono text-[11px] uppercase tracking-widest text-faint">
+                {channel.label}
+              </span>
+              <span className="block truncate text-ink transition-colors duration-300 group-hover:text-cyan">
+                {channel.value}
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div className="reveal relative mt-10 flex flex-col items-center gap-5 rounded-xl border border-dashed border-line-strong px-6 py-10 text-center">
+        <p className="max-w-md text-lg text-dim">
+          Email is the fastest way to reach me — I read and reply to all of it.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex items-center gap-2 rounded-lg bg-cyan px-6 py-3 font-semibold text-void transition-all duration-300 hover:bg-white hover:shadow-[0_0_32px_-6px_rgba(34,211,238,0.65)]"
+          >
+            <FaEnvelope />
+            Send me an email
+          </a>
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="inline-flex items-center gap-2 rounded-lg border border-line-strong px-6 py-3 font-semibold text-ink transition-all duration-300 hover:border-cyan hover:text-cyan"
+          >
+            {copied ? <FaCheck className="text-mint" /> : <FaCopy />}
+            {copied ? "Copied" : "Copy address"}
+          </button>
+        </div>
+        <p aria-live="polite" className="font-mono text-sm text-faint">
+          {copied ? `${EMAIL} copied to clipboard` : EMAIL}
         </p>
       </div>
-
-      {/* Contact Information - Centered */}
-      <div className="max-w-2xl mx-auto">
-        <div className="space-y-6">
-          {/* Email */}
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-lg bg-[#eef2ff] flex items-center justify-center shrink-0">
-              <FaEnvelope className="text-[#6366f1] text-xl" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-[#1e293b] mb-1">Email</h4>
-              <a
-                href="mailto:ngjazwin@gmail.com"
-                className="text-[#64748b] hover:text-[#6366f1] transition-colors"
-              >
-                ngjazwin@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Phone */}
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-lg bg-[#eef2ff] flex items-center justify-center shrink-0">
-              <FaPhone className="text-[#6366f1] text-xl" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-[#1e293b] mb-1">Phone</h4>
-              <p className="text-[#64748b]">+65 9107 7490</p>
-            </div>
-          </div>
-
-          {/* LinkedIn */}
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-lg bg-[#eef2ff] flex items-center justify-center shrink-0">
-              <FaLinkedin className="text-[#6366f1] text-xl" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-[#1e293b] mb-1">LinkedIn</h4>
-              <a
-                href="https://www.linkedin.com/in/jazwinn-ng/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#64748b] hover:text-[#6366f1] transition-colors"
-              >
-                linkedin.com/in/jazwinn-ng
-              </a>
-            </div>
-          </div>
-
-          {/* GitHub */}
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-lg bg-[#eef2ff] flex items-center justify-center shrink-0">
-              <FaGithub className="text-[#6366f1] text-xl" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-[#1e293b] mb-1">GitHub</h4>
-              <a
-                href="https://github.com/jazwinn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#64748b] hover:text-[#6366f1] transition-colors"
-              >
-                github.com/jazwinn
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </Section>
   );
 }
-
-
