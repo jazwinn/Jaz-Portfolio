@@ -23,29 +23,29 @@ export default function About() {
         {/* Prose */}
         <div className="reveal space-y-6 text-base leading-relaxed text-dim sm:text-lg">
           <p>
-            My work sits where computer vision, language models and C++ meet a
-            latency budget. A vision pipeline that has to keep pace with a
-            camera rather than a benchmark. A transformer layer that is
-            mathematically correct but pushes 128&nbsp;MiB of attention scores
-            through global memory five times before anything reads them. A
-            drone payload that runs fine on a desktop and thermally throttles
-            on ARM. The model is rarely the interesting part — it is
-            everything around it that decides whether the answer arrives in
-            time.
-          </p>
-          <p>
-            Those problems are only visible if you measure. So I profile first,
-            form a hypothesis about where the time actually goes, and keep the
-            change only when the numbers agree — every speedup I claim comes
-            with an accuracy check attached to it.
-          </p>
-          <p>
-            I&apos;m currently reading{" "}
+            I&apos;m a Computer Science undergraduate at the {education.school},
+            specialising in{" "}
             <strong className="font-semibold text-ink">
-              Computer Science (Real-Time Interactive Simulation)
-            </strong>{" "}
-            at {education.school}, and building GPU-accelerated vision tooling
-            as a C++ developer intern.
+              real-time interactive simulation
+            </strong>
+            . My interests span computer vision, LLM inference and real-time
+            graphics, with a focus on writing high-performance C++.
+          </p>
+          <p>
+            I enjoy the side of engineering where performance matters —
+            understanding how software uses the hardware underneath it, finding
+            out where the time really goes, and making things faster without
+            making them less correct. That curiosity has taken me from game
+            engines and renderers to GPU programming and deep learning
+            infrastructure.
+          </p>
+          <p>
+            I&apos;m currently a{" "}
+            <strong className="font-semibold text-ink">
+              C++ Developer Intern at Quantified Energy Labs
+            </strong>
+            , and I&apos;m looking for opportunities to build software where
+            both speed and reliability count.
           </p>
         </div>
 

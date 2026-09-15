@@ -45,7 +45,7 @@ export const experience: Role[] = [
 
 export const education = {
   school: "Singapore Institute of Technology (DigiPen)",
-  degree: "BSc Computer Science, Real-Time Interactive Simulation",
+  degree: "Bachelor of Computer Science in Real-Time Interactive Simulation",
   period: "August 2023 \u2014 April 2027",
   modules: ["Machine Learning", "Parallel Programming", "Low-Level Programming"],
 };
