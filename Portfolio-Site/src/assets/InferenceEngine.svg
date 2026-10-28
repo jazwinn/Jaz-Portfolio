@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="JetBrains Mono, ui-monospace, Consolas, monospace">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#94afd6" stroke-opacity="0.06"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#2b3648"/>
+    </marker>
+  </defs>
+  <rect width="800" height="500" fill="#070a0f"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+
+  <text x="48" y="64" fill="#64718a" font-size="14">// llama-3.2-1b-instruct · fp32 · rtx 4050 6 GB</text>
+
+  <!-- Pipeline -->
+  <g font-size="15">
+    <rect x="48" y="96" width="150" height="64" rx="8" fill="#0f141d" stroke="#2b3648"/>
+    <text x="123" y="124" fill="#e8eef8" text-anchor="middle">chat</text>
+    <text x="123" y="144" fill="#e8eef8" text-anchor="middle">template</text>
+
+    <rect x="236" y="96" width="150" height="64" rx="8" fill="#0f141d" stroke="#2b3648"/>
+    <text x="311" y="124" fill="#e8eef8" text-anchor="middle">BPE</text>
+    <text x="311" y="144" fill="#e8eef8" text-anchor="middle">tokenizer</text>
+
+    <rect x="424" y="96" width="328" height="64" rx="8" fill="#0f141d" stroke="#22d3ee" stroke-opacity="0.7"/>
+    <text x="588" y="124" fill="#22d3ee" text-anchor="middle">CausalModel × 16 layers</text>
+    <text x="588" y="144" fill="#93a1b5" text-anchor="middle" font-size="13">RMSNorm · GQA + RoPE · SwiGLU</text>
+
+    <line x1="198" y1="128" x2="232" y2="128" stroke="#2b3648" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="386" y1="128" x2="420" y2="128" stroke="#2b3648" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Backends -->
+  <g font-size="14">
+    <line x1="520" y1="160" x2="520" y2="200" stroke="#2b3648" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="656" y1="160" x2="656" y2="200" stroke="#2b3648" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="424" y="204" width="190" height="54" rx="8" fill="#141b26" stroke="#2b3648"/>
+    <text x="519" y="236" fill="#a78bfa" text-anchor="middle">KV cache (4× smaller)</text>
+
+    <rect x="632" y="204" width="120" height="54" rx="8" fill="#141b26" stroke="#2b3648"/>
+    <text x="692" y="236" fill="#a78bfa" text-anchor="middle">CPU / CUDA</text>
+
+    <rect x="48" y="204" width="338" height="54" rx="8" fill="#141b26" stroke="#2b3648"/>
+    <text x="217" y="236" fill="#93a1b5" text-anchor="middle">.safetensors loader · bf16 → fp32</text>
+  </g>
+
+  <!-- Metrics -->
+  <g>
+    <line x1="48" y1="300" x2="752" y2="300" stroke="#1c2532"/>
+    <text x="48" y="360" fill="#34d399" font-size="40" font-weight="600">7.3</text>
+    <text x="48" y="388" fill="#64718a" font-size="13">tokens / s decode</text>
+
+    <text x="290" y="360" fill="#34d399" font-size="40" font-weight="600">301 ms</text>
+    <text x="290" y="388" fill="#64718a" font-size="13">time to first token</text>
+
+    <text x="560" y="360" fill="#34d399" font-size="40" font-weight="600">1,385</text>
+    <text x="560" y="388" fill="#64718a" font-size="13">tests passing</text>
+  </g>
+
+  <text x="48" y="452" fill="#64718a" font-size="14">$ no PyTorch · CUDA kernels + cuBLAS · ~22k lines C++20</text>
+</svg>

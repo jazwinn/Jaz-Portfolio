@@ -10,6 +10,7 @@ import CameraCullingImg from "../assets/CameraCulling.webp";
 import DocumentReaderImg from "../assets/DocumentReader.webp";
 import StockWebAppImg from "../assets/StockWebApp.webp";
 import InventoryManagerImg from "../assets/InventoryManager.webp";
+import InferenceEngineImg from "../assets/InferenceEngine.svg";
 
 export interface Project {
   title: string;
@@ -55,6 +56,15 @@ export const spotlight = {
 };
 
 export const featured: Project[] = [
+  {
+    title: "InferenceEngine",
+    tagline: "An LLM inference engine in C++20 and CUDA, with no ML libraries",
+    description:
+      "Chats with Llama 3.2 1B Instruct end to end from its Hugging Face checkpoint, with every layer written by hand: BPE tokenizer, grouped-query attention with RoPE and a KV cache, and a CUDA backend that runs the whole forward pass on the GPU. 7.3 tokens/s on a 6 GB laptop GPU, checked by 1,385 tests.",
+    image: InferenceEngineImg,
+    repo: "https://github.com/jazwinn/InferenceEngine",
+    tech: ["C++20", "CUDA", "cuBLAS", "Transformers", "KV Cache", "BPE", "GoogleTest"],
+  },
   {
     title: "Kos Engine 2.0",
     tagline: "3D game engine built from scratch in C++",
