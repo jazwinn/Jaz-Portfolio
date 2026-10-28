@@ -11,6 +11,8 @@ import DocumentReaderImg from "../assets/DocumentReader.webp";
 import StockWebAppImg from "../assets/StockWebApp.webp";
 import InventoryManagerImg from "../assets/InventoryManager.webp";
 import InferenceEngineImg from "../assets/InferenceEngine.svg";
+import AlchemicationImg from "../assets/Alchemication.webp";
+import R00M13AImg from "../assets/R00M13A.webp";
 
 export interface Project {
   title: string;
@@ -19,6 +21,13 @@ export interface Project {
   image: string;
   repo: string;
   tech: string[];
+}
+
+/** A released game — links to its itch.io page rather than to source. */
+export interface Game extends Omit<Project, "tech"> {
+  engine: string;
+  team: number;
+  years: string;
 }
 
 export interface Metric {
@@ -166,5 +175,30 @@ export const smallerWorks: Project[] = [
     image: DocumentReaderImg,
     repo: "https://github.com/jazwinn/OpenCV-Document-Reader",
     tech: ["C++", "OpenCV", "OCR"],
+  },
+];
+
+export const games: Game[] = [
+  {
+    title: "Alchemication",
+    tagline: "First-person action shooter",
+    description:
+      "Absorb your enemies' elemental powers and turn the environment against them to fight through hordes. Shipped on Kos Engine 2.0, the 3D engine our team built from scratch.",
+    image: AlchemicationImg,
+    repo: "https://cjjalchemication.itch.io/alchemication",
+    engine: "Kos Engine 2.0",
+    team: 12,
+    years: "2025–2026",
+  },
+  {
+    title: "R00M13A-OS",
+    tagline: "Top-down one-hit-kill action",
+    description:
+      "Pick a loadout, then run, fight and escape, where one shot decides who lives. Shipped on Kos Engine, our team's 2D engine with C# scripting.",
+    image: R00M13AImg,
+    repo: "https://cjjalchemication.itch.io/r00m13a-os",
+    engine: "Kos Engine",
+    team: 8,
+    years: "2024–2025",
   },
 ];

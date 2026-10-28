@@ -2,7 +2,8 @@ import { FaGithub, FaArrowRight } from "react-icons/fa";
 import Section from "./Components/Section";
 import ProjectCard from "./Components/ProjectCard";
 import CompactCard from "./Components/CompactCard";
-import { spotlight, featured, smallerWorks } from "./data/projects";
+import GameCard from "./Components/GameCard";
+import { spotlight, featured, games, smallerWorks } from "./data/projects";
 
 export default function Project() {
   return (
@@ -90,6 +91,22 @@ export default function Project() {
         {featured.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
+      </div>
+
+      {/* ---------- Shipped games ---------- */}
+      <div className="mt-20">
+        <div className="reveal mb-8 flex items-center gap-4">
+          <h3 className="text-2xl font-bold text-ink sm:text-3xl">
+            Shipped games
+          </h3>
+          <span className="h-px flex-1 hairline" />
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          {games.map((game) => (
+            <GameCard key={game.title} game={game} />
+          ))}
+        </div>
       </div>
 
       {/* ---------- Smaller works ---------- */}
